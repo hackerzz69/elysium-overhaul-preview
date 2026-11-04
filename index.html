@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elysium | Unofficial RSPS</title>
+  <meta name="description" content="Elysium — an unofficial RuneScape private server rising from the shattered lands. Scout the world, play the demo, choose your class, and stand with us before launch.">
+  <link rel="canonical" href="https://elysium-ps.com/">
+  <meta name="theme-color" content="#04070c">
+  <link rel="icon" type="image/png" href="assets/elysium-icon.png">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Elysium">
+  <meta property="og:title" content="Elysium | Unofficial RSPS">
+  <meta property="og:description" content="The old world shattered — we forged a new one from the pieces. Scout the realm, play the demo, choose your class, and join us before launch.">
+  <meta property="og:url" content="https://elysium-ps.com/">
+  <meta property="og:image" content="https://elysium-ps.com/assets/elysium-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Elysium | Unofficial RSPS">
+  <meta name="twitter:description" content="The old world shattered — we forged a new one from the pieces. Your legend begins here.">
+  <meta name="twitter:image" content="https://elysium-ps.com/assets/elysium-logo.png">
+  <!-- Fonts: Cinzel (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- 1. Intro overlay -->
+  <div id="intro" role="dialog" aria-label="Elysium intro">
+    <canvas id="intro-canvas"></canvas>
+    <div id="intro-title" aria-label="Elysium"></div>
+    <button id="intro-skip" type="button">Skip</button>
+  </div>
+
+  <!-- 2. Film grain + vignette overlays -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- 3. Site nav -->
+  <header id="site-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#hero" aria-label="Elysium — back to top">
+        <img src="assets/elysium-logo.png" alt="Elysium logo" width="120" height="40">
+        <span class="nav-wordmark">ELYSIUM</span>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
+        <a href="#world">World</a>
+        <a href="#demo">Demo</a>
+        <a href="#classes">Classes</a>
+        <a href="#hiscores">Hiscores</a>
+        <a href="#lore">Lore</a>
+        <a href="#community">Community</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="audio-toggle" type="button" aria-pressed="false" aria-label="Toggle ambient audio">🔇</button>
+        <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 4. Hero -->
+    <section id="hero">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <p class="kicker reveal">UNOFFICIAL RSPS — PRELAUNCH</p>
+        <h1 class="reveal">ENTER THE REALM</h1>
+        <p class="lede reveal">The old world shattered — we forged a new one from the pieces. Your legend begins here.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="#demo">Play the Demo</a>
+          <a class="btn btn-ghost" href="#community">Join Discord</a>
+        </div>
+        <div id="countdown" class="reveal" role="timer" aria-label="Countdown to launch">
+          <p class="cd-heading">LAUNCH IN</p>
+          <div class="cd-row">
+            <div class="cd-box" id="cd-days"><span class="cd-num">00</span><span class="cd-label">Days</span></div>
+            <div class="cd-box" id="cd-hours"><span class="cd-num">00</span><span class="cd-label">Hours</span></div>
+            <div class="cd-box" id="cd-mins"><span class="cd-num">00</span><span class="cd-label">Mins</span></div>
+            <div class="cd-box" id="cd-secs"><span class="cd-num">00</span><span class="cd-label">Secs</span></div>
+          </div>
+        </div>
+        <p class="scroll-hint reveal" aria-hidden="true">▼ descend</p>
+      </div>
+    </section>
+
+    <!-- 5. World -->
+    <section id="world">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">THE WORLD</p>
+          <h2>Five Lands, One Fate</h2>
+          <p class="lede">Scout the realm before you set foot in it — every region hides its riches and its teeth.</p>
+        </div>
+        <div class="world-wrap">
+          <canvas id="worldmap-canvas" class="reveal" aria-label="Interactive map of Elysium"></canvas>
+          <aside id="map-info" class="reveal" aria-live="polite">
+            <h3 id="map-name">Elysium Citadel</h3>
+            <p id="map-desc">The last bastion of the old world — safe haven, grand exchange, and seat of the Citadel guard. Every legend starts at these gates.</p>
+            <dl id="map-stats"></dl>
+          </aside>
+        </div>
+        <p class="map-hint reveal">Tap a region to scout it</p>
+      </div>
+    </section>
+
+    <!-- 6. Demo -->
+    <section id="demo">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">THE DEMO</p>
+          <h2>TASTE OF ELYSIUM</h2>
+          <p class="lede">No download. No account. Just your hands and the wilderness — begin your grind right here.</p>
+        </div>
+        <div id="game" class="reveal">
+          <div class="game-top">
+            <p id="game-level">Level 1</p>
+            <div id="xp-bar" role="progressbar" aria-label="Experience progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="xp-fill"></div>
+            </div>
+          </div>
+          <div class="resources">
+            <div class="res" id="res-wood"><span class="res-num">0</span><span class="res-label">Wood</span></div>
+            <div class="res" id="res-ore"><span class="res-num">0</span><span class="res-label">Ore</span></div>
+            <div class="res" id="res-fish"><span class="res-num">0</span><span class="res-label">Fish</span></div>
+          </div>
+          <div class="actions">
+            <button id="act-chop" class="action-btn" type="button">🪓 Chop</button>
+            <button id="act-mine" class="action-btn" type="button">⛏️ Mine</button>
+            <button id="act-fish" class="action-btn" type="button">🎣 Fish</button>
+          </div>
+          <div id="auto-row"></div>
+          <ul id="game-log" aria-label="Game log">
+            <li>The realm stirs. Choose an action to begin your legend.</li>
+          </ul>
+          <button id="game-reset" type="button">Reset progress</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Classes -->
+    <section id="classes">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">THE CLASSES</p>
+          <h2>CHOOSE YOUR PATH</h2>
+          <p class="lede">Three roads wind through the shattered lands. Each will change how the realm answers you.</p>
+        </div>
+        <div class="class-cards">
+          <article class="class-card reveal active" data-class="melee" role="button" tabindex="0" aria-pressed="true" aria-label="Select the Vanguard class">
+            <span class="class-icon" aria-hidden="true">⚔️</span>
+            <h3>The Vanguard</h3>
+            <p class="class-tag">Steel incarnate</p>
+          </article>
+          <article class="class-card reveal" data-class="ranged" role="button" tabindex="0" aria-pressed="false" aria-label="Select the Warden class">
+            <span class="class-icon" aria-hidden="true">🏹</span>
+            <h3>The Warden</h3>
+            <p class="class-tag">Death from the treeline</p>
+          </article>
+          <article class="class-card reveal" data-class="magic" role="button" tabindex="0" aria-pressed="false" aria-label="Select the Arcanist class">
+            <span class="class-icon" aria-hidden="true">🔮</span>
+            <h3>The Arcanist</h3>
+            <p class="class-tag">Weaver of the shattered light</p>
+          </article>
+        </div>
+        <div id="class-display" class="reveal">
+          <canvas id="class-canvas" aria-hidden="true"></canvas>
+          <div class="class-info">
+            <h3 id="class-name">The Vanguard</h3>
+            <p id="class-desc">We are the wall that does not break. When the Ember King&rsquo;s ash-legions march, the Vanguard meets them steel-first — every blow a promise that the Citadel stands. Heavy armor, heavier resolve.</p>
+            <ul id="class-abilities">
+              <li><strong>Cleave</strong> — a sweeping arc that punishes everything in reach</li>
+              <li><strong>Bulwark</strong> — raise your shield and laugh at the storm</li>
+              <li><strong>Wrath of the Fallen</strong> — call on the fallen to strike beside you</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Hiscores -->
+    <section id="hiscores">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">HISCORES</p>
+          <h2>HALL OF LEGENDS</h2>
+          <p class="lede">The greatest names the realm has ever known — written in blood and starlight.</p>
+        </div>
+        <div class="table-wrap reveal">
+          <table id="hiscore-table">
+            <caption class="sr-only">Top adventurers by experience</caption>
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Adventurer</th>
+                <th scope="col">Level</th>
+                <th scope="col">XP</th>
+              </tr>
+            </thead>
+            <tbody id="hiscore-body"></tbody>
+          </table>
+        </div>
+        <p class="hiscore-note reveal">Simulated — live hiscores at launch.</p>
+      </div>
+    </section>
+
+    <!-- 9. Lore -->
+    <section id="lore">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">THE LORE</p>
+          <h2>SONGS OF THE SHATTERING</h2>
+          <p class="lede">Every realm has a beginning. Ours began with an ending.</p>
+        </div>
+        <article class="lore-chapter reveal">
+          <div class="lore-bg" aria-hidden="true"></div>
+          <div class="lore-content">
+            <p class="lore-kicker">Chapter I</p>
+            <h3>The Shattering</h3>
+            <p>We remember the sky breaking before we remember anything else. The gods had warred above us for a thousand years, and on the last night their weapons fell like burning rain. Mountains folded. Seas rose screaming. The old world did not end with a whisper — it ended with a wound that never closed.</p>
+            <p>From that wound bled the Aether, raw magic the gods had hoarded since creation. It pooled in the cracks of the world and learned to dream. And in those dreams it called to us — the survivors, the stubborn, the ones who refused to kneel even at the end of everything.</p>
+          </div>
+        </article>
+        <article class="lore-chapter reveal">
+          <div class="lore-bg" aria-hidden="true"></div>
+          <div class="lore-content">
+            <p class="lore-kicker">Chapter II</p>
+            <h3>The Exile</h3>
+            <p>We fled into the dark places — the deep woods, the high ice, the drowned coasts — and learned to live on what the broken world gave us. Woodcutters became wardens. Miners became war-priests of the deep stone. Fishers read the tides like scripture. We were exiles, yes, but we were alive, and the Aether sang louder with every passing year.</p>
+            <p>Then the Wastes began to move. Something old crawled out of the wound at the world&rsquo;s heart, wearing the shape of our dead gods. The Ember King rose with an army of ash, and the scattered tribes knew the truth at last: we could run no longer. We had to become one people — or become nothing at all.</p>
+          </div>
+        </article>
+        <article class="lore-chapter reveal">
+          <div class="lore-bg" aria-hidden="true"></div>
+          <div class="lore-content">
+            <p class="lore-kicker">Chapter III</p>
+            <h3>The Return</h3>
+            <p>So we marched — woodcutters and wardens, miners and mages, fishers and fighters — back toward the light we had fled. We raised the Citadel stone by stone above the scar, and its spires drink the Aether now instead of fearing it. This is Elysium: not the paradise the old songs promised, but the one we built with our own hands.</p>
+            <p>The Ember King still waits in the Wastes, and the wound still bleeds. But look at us — we are the children of the Shattering, and we do not kneel. Take up your axe, your pick, your rod, your blade. The realm is calling, and it is calling your name.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 10. Community -->
+    <section id="community">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">THE COMMUNITY</p>
+          <h2>STAND WITH US</h2>
+          <p class="lede">No realm survives on its heroes alone. Ours is carried by the thousands who believed before the gates ever opened.</p>
+        </div>
+        <p class="member-line reveal"><span id="member-count">2,400</span> adventurers have already answered the call.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="#">Join Discord</a>
+          <a class="btn btn-ghost" href="#">Vote for Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 11. Footer -->
+  <footer>
+    <div class="container">
+      <p class="disclaimer">Elysium is an unofficial, fan-made project. We are not affiliated with, endorsed by, or connected to Jagex Ltd. RuneScape is a registered trademark of Jagex Ltd. All game content shown is original work created for this project.</p>
+      <p class="copyright">© <span id="year">2026</span> Elysium — elysium-ps.com</p>
+    </div>
+  </footer>
+
+  <script src="js/audio.js"></script>
+  <script src="js/intro.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/classes.js"></script>
+  <script src="js/hiscores.js"></script>
+  <script src="js/lore.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
